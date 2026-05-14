@@ -24,3 +24,5 @@ Last updated: 2026-04-19 23:48:20 CEST
 ### Personal Notes (fork)
 
 <!-- Personal note: I ran into the client-not-enrolled error myself before finding the Pay-per-use fix above. Keeping this note as a reminder that the app environment setting in the developer portal is easy to overlook. -->
+
+<!-- Personal note: On macOS, the system browser sometimes takes 2-3 seconds to open after the OAuth flow starts. If the loopback listener times out before the user authorizes, try setting XURL_OAUTH_TIMEOUT=120 in your environment to give yourself more breathing room. -->
