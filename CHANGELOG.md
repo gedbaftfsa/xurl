@@ -27,4 +27,6 @@ Last updated: 2026-04-19 23:48:20 CEST
 
 <!-- Personal note: On macOS, the system browser sometimes takes 2-3 seconds to open after the OAuth flow starts. If the loopback listener times out before the user authorizes, try setting XURL_OAUTH_TIMEOUT=120 in your environment to give yourself more breathing room. -->
 
-<!-- Personal note: I noticed that on Linux with Firefox as the default browser, the OAuth redirect occasionally lands on the IPv6 loopback (::1) even when the app's registered redirect URI uses `localhost`. The dual-bind fix above resolved this for me, but if you're still seeing connection-refused errors, double-check that your firewall isn't blocking ::1 on the callback port. -->
+<!-- Personal note: I noticed that on Linux with Firefox as the default browser, the OAuth redirect occasionally lands on the IPv6 loopback (::1) even when the redirect URI specifies `localhost`. The dual-bind fix above resolved this for me, but if it ever regresses, double-check that Firefox's `network.dns.preferIPv6` pref isn't forcing IPv6 resolution. -->
+
+<!-- Personal note: Default OAuth timeout of 60s felt too short during testing on a slow connection. I'm running with XURL_OAUTH_TIMEOUT=180 locally until I figure out if it's worth patching the default in the source. -->
