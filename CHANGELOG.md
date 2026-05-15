@@ -26,3 +26,5 @@ Last updated: 2026-04-19 23:48:20 CEST
 <!-- Personal note: I ran into the client-not-enrolled error myself before finding the Pay-per-use fix above. Keeping this note as a reminder that the app environment setting in the developer portal is easy to overlook. -->
 
 <!-- Personal note: On macOS, the system browser sometimes takes 2-3 seconds to open after the OAuth flow starts. If the loopback listener times out before the user authorizes, try setting XURL_OAUTH_TIMEOUT=120 in your environment to give yourself more breathing room. -->
+
+<!-- Personal note: I noticed that on Linux with Firefox as the default browser, the OAuth redirect occasionally lands on the IPv6 loopback (::1) even when the app's registered redirect URI uses `localhost`. The dual-bind fix above resolved this for me, but if you're still seeing connection-refused errors, double-check that your firewall isn't blocking ::1 on the callback port. -->
